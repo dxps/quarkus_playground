@@ -18,7 +18,7 @@ public class HelloResourceTest {
                 .when().get("/hello")
                 .then()
                 .statusCode(200)
-                .body(is("hello\n"));
+                .body(is("Hello!\n"));
     }
 
     @Test
@@ -26,10 +26,10 @@ public class HelloResourceTest {
         String uuid = UUID.randomUUID().toString();
         given()
                 .pathParam("name", uuid)
-                .when().get("/hello/greeting/{name}")
+                .when().get("/hello/{name}")
                 .then()
                 .statusCode(200)
-                .body(is("hello " + uuid + "\n"));
+                .body(is("Hello " + uuid + "!\n"));
     }
 
 }
