@@ -27,6 +27,14 @@ Launching it using `mvn compile quarkus:dev`. Result (initial output):
 
 <br/>
 
+## Memory Consumption
+
+todo: package and options
+
+Use `ps -o pid,rss,command -p $(pgrep quarkus-xps)` to see how much memory (native, not just heap) is being used.
+
+<br/>
+
 ## Creation
 
 This project was created using:
