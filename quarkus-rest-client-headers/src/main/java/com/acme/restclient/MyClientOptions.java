@@ -9,10 +9,10 @@ import javax.ws.rs.HeaderParam;
 @ApplicationScoped
 public class MyClientOptions {
 
-    @ConfigProperty(name="myclient.username")
+    @ConfigProperty(name = "myclient.username")
     String username;
 
-    @ConfigProperty(name="myclient.password")
+    @ConfigProperty(name = "myclient.password")
     String password;
 
     @HeaderParam("Authorization")
