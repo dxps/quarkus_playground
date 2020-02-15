@@ -5,12 +5,11 @@ import io.vertx.core.Vertx;
 import org.acme.config.events.ReloadConfigEventsCodec;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.Initialized;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 
-@Initialized(ApplicationScoped.class)
+@ApplicationScoped
 public class Config {
 
     @Inject

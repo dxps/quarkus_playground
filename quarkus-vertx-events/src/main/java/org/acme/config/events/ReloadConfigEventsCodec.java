@@ -18,11 +18,16 @@ public class ReloadConfigEventsCodec implements MessageCodec<List<ReloadConfigEv
     @Override
     public void encodeToWire(Buffer buffer, List<ReloadConfigEvent> events) {
         // TODO: to implement
+        // This method is called when sending the events over the wire (network).
+        // The List (2nd param) should be serialized into the Buffer (1st param).
+        // The Buffer is what gets sent over the network to another JVM.
     }
 
     @Override
     public List<ReloadConfigEvent> decodeFromWire(int pos, Buffer buffer) {
         // TODO: to implement
+        // This method is called when receiving the events from the wire (network).
+        // The Buffer (2nd param) needs to be deserialized into the List that is returned.
         return null;
     }
 
