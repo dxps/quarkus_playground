@@ -4,6 +4,7 @@ package org.acme.config;
 import io.quarkus.vertx.ConsumeEvent;
 import org.acme.config.events.ReloadConfigEvent;
 import org.acme.config.events.ReloadConfigEvents;
+import org.acme.config.events.ReloadConfigEventsCodec;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.List;
@@ -26,12 +27,10 @@ public class ConfigManager {
         return "OK";
     }
 
-    // The following method is commented out since
-    // although the codec is being registered to the event bus at startup (see Config's onStart),
-    // that registration happens after EventBusCodecProcessor initialization who fails
-    // the entire Quarkus startup.
+    // The following method is commented out since collections and arrays are not supported,
+    // although the codec is being registered in the `@ConsumeEvent` annotation.
 
-//    @ConsumeEvent(Config.EBA_CONFIG_RELOAD)
+//    @ConsumeEvent(value = Config.EBA_CONFIG_RELOAD, codec = ReloadConfigEventsCodec.class)
 //    public String reload(List<ReloadConfigEvent> events) {
 //
 //        System.out.println(">>> ConfigManager > reload > Got events: " + events);

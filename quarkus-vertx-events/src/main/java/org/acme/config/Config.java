@@ -2,11 +2,12 @@ package org.acme.config;
 
 import io.quarkus.runtime.StartupEvent;
 import io.vertx.core.Vertx;
-import org.acme.config.events.ReloadConfigEventsCodec;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
+
+// import org.acme.config.events.ReloadConfigEventsCodec;
 
 
 @ApplicationScoped
@@ -22,8 +23,9 @@ public class Config {
 
     void onStart(@Observes StartupEvent event) {
 
-        vertx.eventBus().registerCodec(new ReloadConfigEventsCodec());
-        System.out.println(">>> Registered codec for List<ReloadConfigEvents>.");
+        // No need to register the codec here. `@ConsumeEvent` provides an attribute for this.
+        // vertx.eventBus().registerCodec(new ReloadConfigEventsCodec());
+        // System.out.println(">>> Registered codec for List<ReloadConfigEvents>.");
     }
 
 }
