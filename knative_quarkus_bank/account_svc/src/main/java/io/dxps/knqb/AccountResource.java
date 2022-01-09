@@ -12,19 +12,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Path("/accounts")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
 public class AccountResource {
 
     Set<Account> accounts = new HashSet<>();
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public Set<Account> allAccounts() {
         return accounts;
     }
 
     @GET
     @Path("/{accountNumber}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Account getAccount(@PathParam("accountNumber") Long accountNumber) {
         var response = accounts.stream()
                 .filter(account -> account.getAccountNumber().equals(accountNumber)).findFirst();
@@ -32,6 +32,8 @@ public class AccountResource {
     }
 
     @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response createAccount(Account account) {
         if (account.getAccountNumber() == null) {
             throw new WebApplicationException("No Account number specified.", 400);
