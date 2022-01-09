@@ -1,6 +1,7 @@
 package io.dxps.knqb;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Account {
 
@@ -57,4 +58,16 @@ public class Account {
         return status;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return accountNumber.equals(account.accountNumber) && customerNumber.equals(account.customerNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountNumber, customerNumber);
+    }
 }
