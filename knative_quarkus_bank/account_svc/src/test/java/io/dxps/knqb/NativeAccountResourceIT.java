@@ -8,7 +8,7 @@ import io.quarkus.test.junit.QuarkusIntegrationTest;
 
 //@NativeImageTest
 @QuarkusIntegrationTest
-public class NativeAccountResourceTest extends AccountResourceTest{
+public class NativeAccountResourceIT extends AccountResourceTest{
 
     // With "mvn clean install -Pnative" it will run the existing tests
     // against the generated executable.
