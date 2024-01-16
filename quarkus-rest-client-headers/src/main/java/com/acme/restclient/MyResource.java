@@ -1,7 +1,5 @@
 package com.acme.restclient;
 
-import org.eclipse.microprofile.rest.client.inject.RestClient;
-
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
