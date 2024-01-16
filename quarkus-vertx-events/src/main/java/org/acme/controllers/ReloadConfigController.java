@@ -1,9 +1,6 @@
 package org.acme.controllers;
 
-import io.vertx.axle.core.eventbus.EventBus;
-import io.vertx.axle.core.eventbus.Message;
-import org.acme.config.Config;
-import org.acme.config.events.ReloadConfigEvent;
+import java.util.concurrent.CompletionStage;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -11,8 +8,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.concurrent.CompletionStage;
 
+import org.acme.config.Config;
+import org.acme.config.events.ReloadConfigEvent;
+
+import io.vertx.axle.core.eventbus.EventBus;
+import io.vertx.axle.core.eventbus.Message;
 
 @Path("/config/reload")
 public class ReloadConfigController {
@@ -28,7 +29,9 @@ public class ReloadConfigController {
         System.out.println(">>> ReloadConfigController > reloadSection > Handling request: " + section);
         var event = ReloadConfigEvent.valueOf(section.toUpperCase());
 
-        return eventBus.<String>send(Config.EBA_CONFIG_RELOAD, event)
+        // .send() is deprecated.
+        // return eventBus.<String>send(Config.EBA_CONFIG_RELOAD, event)
+        return eventBus.<String>request(Config.EBA_CONFIG_RELOAD, event)
                 .thenApply(Message::body);
 
     }
@@ -41,12 +44,12 @@ public class ReloadConfigController {
     @Produces(MediaType.TEXT_PLAIN)
     public CompletionStage<String> reloadSections(@PathParam("sections") String section) {
 
-
-
         System.out.println(">>> ReloadConfigController > reloadSection > Handling request: " + section);
         var event = ReloadConfigEvent.valueOf(section.toUpperCase());
 
-        return eventBus.<String>send(Config.EBA_CONFIG_RELOAD, event)
+        // .send() is deprecated.
+        // return eventBus.<String>send(Config.EBA_CONFIG_RELOAD, event)
+        return eventBus.<String>request(Config.EBA_CONFIG_RELOAD, event)
                 .thenApply(Message::body);
 
     }
