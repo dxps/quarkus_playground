@@ -5,6 +5,7 @@
   <groupId>org.devisions.quarkus</groupId>
   <artifactId>quarkus-coffee-shop</artifactId>
   <version>1.0.0</version>
+
   <properties>
     <maven.compiler-plugin.version>3.12.1</maven.compiler-plugin.version>
     <maven.compiler.release>21</maven.compiler.release>
@@ -16,6 +17,7 @@
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.1.2</surefire-plugin.version>
   </properties>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -27,7 +29,9 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
   <dependencies>
+
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-reactive-jsonb</artifactId>
@@ -40,13 +44,25 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.30</version>
+    </dependency>
+
+    <!-- Testing  -->
+
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
+
   <build>
+
     <plugins>
       <plugin>
         <groupId>${quarkus.platform.group-id}</groupId>
@@ -105,8 +121,11 @@
         </configuration>
       </plugin>
     </plugins>
+
   </build>
+
   <profiles>
+
     <profile>
       <id>native</id>
       <activation>
@@ -118,6 +137,9 @@
         <skipITs>false</skipITs>
         <quarkus.package.type>native</quarkus.package.type>
       </properties>
+
     </profile>
+
   </profiles>
+
 </project>
