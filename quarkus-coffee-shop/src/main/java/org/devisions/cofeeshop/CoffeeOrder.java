@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+//import org.devisions.cofeeshop.validations.EnumNamePattern;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -23,6 +24,9 @@ public class CoffeeOrder {
     private Instant createdAt;
 
     @NotNull
+    // TODO: Doesn't work. During deserialization, it still throws an IllegalArgumentException
+    // due to 'No enum constant org.devisions.cofeeshop.CoffeeType.some'
+    // @EnumNamePattern(regexp = "CAPPUCCINO|EXPRESSO|FILTER")
     private CoffeeType type;
 
     public CoffeeOrder() {
