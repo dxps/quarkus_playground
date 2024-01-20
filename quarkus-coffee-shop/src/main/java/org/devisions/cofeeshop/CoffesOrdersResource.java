@@ -16,7 +16,7 @@ public class CoffesOrdersResource {
     @GET
     @Path("/")
     public JsonArray getAll() {
-        // A programmatic JSON example.
+        // Example 1: Programmatic JSON example.
         return Json.createArrayBuilder()
                 .add(1)
                 .add("Hello")
@@ -25,7 +25,7 @@ public class CoffesOrdersResource {
                         .add("value", 123)
                 )
                 .build();
-        // For custom mapping (although a `mapToJson(order)` method would be better):
+        // Example 2: Custom mapping (although a `mapToJson(order)` method would be better):
         //        return List.of(new CoffeeOrder())
         //                .stream().map(o -> Json.createObjectBuilder()
         //                        .add("type", o.getType().name().toLowerCase())
