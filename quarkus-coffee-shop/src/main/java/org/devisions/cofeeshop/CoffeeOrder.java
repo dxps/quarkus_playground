@@ -3,12 +3,10 @@ package org.devisions.cofeeshop;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTypeDeserializer;
 import jakarta.json.bind.annotation.JsonbTypeSerializer;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.devisions.cofeeshop.serdes.CoffeeTypeDeserializer;
-//import org.devisions.cofeeshop.validations.EnumNamePattern;
 
 import java.time.Instant;
 import java.util.UUID;
