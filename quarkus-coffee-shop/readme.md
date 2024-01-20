@@ -7,7 +7,7 @@ A playground project for diving deeper into some of the features provided by Qua
 ### Usage
 
 - Place an order:\
-  `curl -X PUT localhost:8080/orders` -H 'content-type: application/json' -d '{ "type": "Cappuccino" }'
+  `curl -X PUT localhost:8080/orders -H 'content-type: application/json' -d '{ "type": "CAPPUCCINO" }'`
 - Get all orders:\
   `curl localhost:8080/orders`
 

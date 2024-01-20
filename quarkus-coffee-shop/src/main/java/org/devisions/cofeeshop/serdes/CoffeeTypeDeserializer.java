@@ -13,10 +13,13 @@ public class CoffeeTypeDeserializer implements JsonbDeserializer<CoffeeType> {
     @Override
     public CoffeeType deserialize(JsonParser parser, DeserializationContext ctx, Type rtType) {
 
-        var value = parser.getValue();
+        var value = parser.getValue().toString();
+        value = value.substring(1, value.length()-1);
         try {
-            return CoffeeType.valueOf(value.toString());
+            System.out.println("[dbg] deserialize: got value=" + value);
+            return CoffeeType.valueOf(value);
         } catch (IllegalArgumentException iae) {
+            System.err.println("[dbg] deserialize err: " + iae.getMessage());
             // Provided value cannot be deserialized as CoffeeType.
             // FYI: This isn't catched by the `ConstraintViolationExceptionMapper`,
             //      but by the `GlobalErrorMapper`.
