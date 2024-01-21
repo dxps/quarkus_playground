@@ -1,5 +1,6 @@
 package org.devisions.cofeeshop;
 
+import jakarta.json.Json;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
@@ -11,11 +12,13 @@ public class ConstraintViolationExceptionMapper implements ExceptionMapper<Const
     @Override
     public Response toResponse(ConstraintViolationException e) {
 
-        var statusBuilder = Response.status(Response.Status.BAD_REQUEST);
+        var errors = Json.createArrayBuilder();
         e.getConstraintViolations().forEach(
-                v -> statusBuilder.header("x-validation-error",
-                v.getPropertyPath() + " " + v.getMessage()));
-        return statusBuilder.build();
+                v -> errors.add(v.getPropertyPath() + " " + v.getMessage())
+        );
+        var obj = Json.createObjectBuilder().add("errors", errors.build()).build();
+
+        return Response.status(Response.Status.BAD_REQUEST).entity(obj).build();
     }
 
 }

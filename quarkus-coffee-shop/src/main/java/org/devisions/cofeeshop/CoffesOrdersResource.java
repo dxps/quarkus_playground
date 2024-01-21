@@ -3,6 +3,7 @@ package org.devisions.cofeeshop;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
+import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.validation.Valid;
@@ -44,7 +45,7 @@ public class CoffesOrdersResource {
     }
 
     @POST
-    public CoffeeOrder create(@Valid CoffeeOrder order) {
+    public CoffeeOrder create(@Valid @NotNull CoffeeOrder order) {
         System.out.printf("[create] Got order: %s\n", order);
         var newOrder = new CoffeeOrder();
         newOrder.setType(order.getType());

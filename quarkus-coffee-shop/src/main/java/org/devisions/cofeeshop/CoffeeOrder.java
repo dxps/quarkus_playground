@@ -3,6 +3,7 @@ package org.devisions.cofeeshop;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTypeDeserializer;
 import jakarta.json.bind.annotation.JsonbTypeSerializer;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -23,6 +24,7 @@ public class CoffeeOrder {
     @JsonbTypeSerializer(InstantTimestampSerializer.class)
     private Instant createdAt;
 
+    @NotNull
     @JsonbTypeDeserializer(CoffeeTypeDeserializer.class)
     private CoffeeType type;
 

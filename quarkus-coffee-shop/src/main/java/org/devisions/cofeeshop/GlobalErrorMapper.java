@@ -12,9 +12,9 @@ public class GlobalErrorMapper implements ExceptionMapper<Exception> {
     @Override
     public Response toResponse(Exception e) {
 
-        System.err.printf("[dbg] Got the exception type='%s' with message='%s' and its root cause (message)='%s'.\n",
-                e.getClass().getName(),
-                e.getMessage(), e.getCause().getMessage());
+        var cause = e.getCause() != null ? e.getCause().getMessage() : "";
+        System.err.printf("[GlobalErrorMapper] [dbg] Got the exception type='%s' with message='%s' and its root cause (message)='%s'.\n",
+                e.getClass().getName(), e.getMessage(), cause);
 
         if (e instanceof JsonbException) {
             var obj = Json.createObjectBuilder()
