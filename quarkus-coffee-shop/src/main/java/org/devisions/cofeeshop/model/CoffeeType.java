@@ -1,4 +1,4 @@
-package org.devisions.cofeeshop;
+package org.devisions.cofeeshop.model;
 
 public enum CoffeeType {
 

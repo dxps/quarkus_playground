@@ -1,10 +1,10 @@
-package org.devisions.cofeeshop.serdes;
+package org.devisions.cofeeshop.controllers.serdes;
 
 import jakarta.json.bind.serializer.DeserializationContext;
 import jakarta.json.bind.serializer.JsonbDeserializer;
 import jakarta.json.stream.JsonParser;
 import jakarta.validation.ConstraintViolationException;
-import org.devisions.cofeeshop.CoffeeType;
+import org.devisions.cofeeshop.model.CoffeeType;
 
 import java.lang.reflect.Type;
 
@@ -16,7 +16,6 @@ public class CoffeeTypeDeserializer implements JsonbDeserializer<CoffeeType> {
         var value = parser.getValue().toString();
         value = value.substring(1, value.length()-1);
         try {
-            System.out.println("[dbg] deserialize: got value=" + value);
             return CoffeeType.valueOf(value);
         } catch (IllegalArgumentException iae) {
             System.err.println("[dbg] deserialize err: " + iae.getMessage());
