@@ -19,9 +19,7 @@ public class CoffeeTypeDeserializer implements JsonbDeserializer<CoffeeType> {
             return CoffeeType.valueOf(value);
         } catch (IllegalArgumentException iae) {
             System.err.println("[dbg] deserialize err: " + iae.getMessage());
-            // Provided value cannot be deserialized as CoffeeType.
-            // FYI: This isn't catched by the `ConstraintViolationExceptionMapper`,
-            //      but by the `GlobalErrorMapper`.
+            // FYI: This isn't catched by the `ConstraintViolationExceptionMapper`, but by the `GlobalErrorMapper`.
             throw new ConstraintViolationException("Provided 'type' has an invalid value", null);
         }
     }
